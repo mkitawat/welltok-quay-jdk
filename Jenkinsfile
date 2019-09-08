@@ -1,6 +1,7 @@
 pipeline {
     agent {
-        dockerfile { 
+        dockerfile {
+            label 'agent-activate'
             filename 'Dockerfile'
             registryUrl 'https://quay.io/repository/'
             // registryCredentialsId 'quay-welltok-mkitawat'
