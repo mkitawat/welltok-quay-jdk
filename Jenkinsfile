@@ -4,7 +4,7 @@ pipeline {
             label 'agent-activate'
             filename 'Dockerfile'
             registryUrl 'https://quay.io/repository/'
-            // registryCredentialsId 'quay-welltok-mkitawat'
+            registryCredentialsId 'quay-welltok-mkitawat'
         }
     }
     stages {
