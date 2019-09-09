@@ -22,7 +22,7 @@ pipeline {
                     filename 'Dockerfile'
                     registryUrl 'https://quay.io/repository/'
                     registryCredentialsId 'quay-welltok-mkitawat'
-                    args "-v wpsmvn2:/var/lib/maven:rw,z"
+                    args "-v /home/jenkins/wpsmvn:/var/lib/maven:rw,z"
                 }
             }
             steps {
