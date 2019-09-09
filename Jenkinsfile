@@ -5,7 +5,7 @@ pipeline {
             filename 'Dockerfile'
             registryUrl 'https://quay.io/repository/'
             registryCredentialsId 'quay-welltok-mkitawat'
-            args "-v wps_mvn:/var/lib/maven:rw"
+            args "-v wpsmvn:/var/lib/maven:rw,z"
         }
     }
     stages {
@@ -19,8 +19,6 @@ pipeline {
                     echo $JAVA_HOME
                     echo USER=${USER:-unknown}
                     echo USER_HOME=${USER_HOME:-unknown}
-                    docker volume ls
-                    docker volume inspect wps_mvn
                     ls -la $WORKSPACE
                     whereis java
                     whereis mvn
