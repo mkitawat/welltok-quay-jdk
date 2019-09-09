@@ -4,11 +4,13 @@ pipeline {
     }
     stages {
         stage('Initialize') {
-            sh '''
-                docker volume create wpsmvn
-                docker volume ls
-                docker volume inspect wpsmvn
-            '''
+            steps {
+                sh '''
+                    docker volume create wpsmvn
+                    docker volume ls
+                    docker volume inspect wpsmvn
+                '''
+            }
         }
         stage('Practice1') {
             agent {
