@@ -6,7 +6,9 @@ pipeline {
         stage('Initialize') {
             steps {
                 sh '''
+                    echo USER=${USER:-unknown}
                     mkdir -p /home/jenkins/wpsmvn
+                    chown -R jenkins /home/jenkins/wpsmvn
                     ls -la /home/jenkins
                     ls -la /home/jenkins/wpsmvn
                     docker volume create --opt o=uid=1001,gid=1001,rw wpsmvn2

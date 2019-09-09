@@ -12,10 +12,10 @@ RUN apt-get update \
 # VOLUME $MAVEN_USER_HOME
 
 ENV WP_USER wellpass
-ENV WP_HOME /home/${WP_USER}
+ENV WP_HOME /home/$WP_USER
+ENV MAVEN_OPTS -Duser.home=$WP_HOME
 VOLUME $WP_HOME
 
-RUN useradd -m -d ${WP_HOME} ${WP_USER} \
-   && chown -R ${WP_USER} ${WP_HOME}
+RUN useradd -m -d $WP_HOME $WP_USER
 
-USER ${USER}
+USER $WP_USER
