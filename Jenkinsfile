@@ -1,15 +1,25 @@
 pipeline {
     agent {
-        dockerfile {
-            label 'agent-activate'
-            filename 'Dockerfile'
-            registryUrl 'https://quay.io/repository/'
-            registryCredentialsId 'quay-welltok-mkitawat'
-            args "-v wpsmvn:/var/lib/maven:rw,z"
-        }
+        label 'agent-activate'
     }
     stages {
+        stage('Initialize') {
+            sh '''
+                docker volume create wpsmvn
+                docker volume ls
+                docker volume inspect wpsmvn
+            '''
+        }
         stage('Practice1') {
+            agent {
+                dockerfile {
+                    label 'agent-activate'
+                    filename 'Dockerfile'
+                    registryUrl 'https://quay.io/repository/'
+                    registryCredentialsId 'quay-welltok-mkitawat'
+                    args "-v wpsmvn:/var/lib/maven:rw,z"
+                }
+            }
             steps {
                 sh '''
                     set +e
