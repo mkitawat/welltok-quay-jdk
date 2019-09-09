@@ -41,8 +41,8 @@ pipeline {
                     mvn --version
                     ls -la /var/lib
                     ls -la /var/lib/maven
-                    mvn help:effective-settings
-                    mvn help:system
+                    mvn -X help:effective-settings
+                    mvn -X help:system
                 '''
             }
         }
