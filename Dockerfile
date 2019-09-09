@@ -16,6 +16,7 @@ ENV WP_HOME /home/$WP_USER
 ENV MAVEN_OPTS -Duser.home=$WP_HOME
 VOLUME $WP_HOME
 
-RUN useradd -m -d $WP_HOME $WP_USER
+RUN useradd -m -d $WP_HOME $WP_USER \
+  && chown -R $WP_USER $WP_HOME
 
 USER $WP_USER

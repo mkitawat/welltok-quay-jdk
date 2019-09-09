@@ -8,7 +8,8 @@ pipeline {
                 sh '''
                     echo USER=${USER:-unknown}
                     mkdir -p /home/jenkins/wpsmvn
-                    chown -R jenkins /home/jenkins/wpsmvn
+                    chown -R $USER /home/jenkins/wpsmvn
+                    id -u $USER
                     ls -la /home/jenkins
                     ls -la /home/jenkins/wpsmvn
                     docker volume create --opt o=uid=1001,gid=1001,rw wpsmvn2
@@ -32,6 +33,7 @@ pipeline {
                     set +e
                     set -o
                     whoami
+                    id
                     echo $PATH
                     echo $JAVA_HOME
                     echo USER=${USER:-unknown}
