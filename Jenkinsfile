@@ -17,7 +17,7 @@ pipeline {
                     echo $PATH
                     echo $JAVA_HOME
                     echo $USER_HOME
-                    ls -la "${env.WORKSPACE}"
+                    ls -la $WORKSPACE
                     whereis java
                     whereis mvn
                     java -version
