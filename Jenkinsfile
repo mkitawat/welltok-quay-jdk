@@ -25,7 +25,7 @@ pipeline {
                     filename 'Dockerfile'
                     registryUrl 'https://quay.io/repository/'
                     registryCredentialsId 'quay-welltok-mkitawat'
-                    args "-v /home/jenkins/wpsmvn:/home/wellpass:rw,z"
+                    args "-v wpsmvn2:/home/wellpass:rw,z"
                 }
             }
             steps {
