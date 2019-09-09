@@ -22,7 +22,7 @@ pipeline {
                     filename 'Dockerfile'
                     registryUrl 'https://quay.io/repository/'
                     registryCredentialsId 'quay-welltok-mkitawat'
-                    args "-v /home/jenkins/wpsmvn:/var/lib/maven:rw,z"
+                    args "-v /home/jenkins/wpsmvn:/home/wellpass:rw,z"
                 }
             }
             steps {
@@ -39,8 +39,7 @@ pipeline {
                     whereis mvn
                     java -version
                     mvn --version
-                    ls -la /var/lib
-                    ls -la /var/lib/maven
+                    ls -la /home/wellpass
                     mvn -X help:effective-settings
                     mvn -X help:system
                 '''
