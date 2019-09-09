@@ -9,9 +9,9 @@ pipeline {
                     mkdir -p /home/jenkins/wpsmvn
                     ls -la /home/jenkins
                     ls -la /home/jenkins/wpsmvn
-                    docker volume create wpsmvn
+                    docker volume create --opt o=uid=1001,gid=1001,rw wpsmvn2
                     docker volume ls
-                    docker volume inspect wpsmvn
+                    docker volume inspect wpsmvn2
                 '''
             }
         }
@@ -22,7 +22,7 @@ pipeline {
                     filename 'Dockerfile'
                     registryUrl 'https://quay.io/repository/'
                     registryCredentialsId 'quay-welltok-mkitawat'
-                    args "-v wpsmvn:/var/lib/maven:rw,z"
+                    args "-v wpsmvn2:/var/lib/maven:rw,z"
                 }
             }
             steps {
