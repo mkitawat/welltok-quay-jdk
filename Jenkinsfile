@@ -14,9 +14,12 @@ pipeline {
                 sh '''
                     set +e
                     set -o
+                    whoami
                     echo $PATH
                     echo $JAVA_HOME
+                    echo $USER
                     echo $USER_HOME
+                    mkdir -p ${WORKSPACE}/.m2/repository
                     ls -la $WORKSPACE
                     whereis java
                     whereis mvn
