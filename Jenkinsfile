@@ -5,7 +5,7 @@ pipeline {
             filename 'Dockerfile'
             registryUrl 'https://quay.io/repository/'
             registryCredentialsId 'quay-welltok-mkitawat'
-            args "-v ${env.WORKSPACE}:/var/lib/maven"
+            args "-v ${env.WORKSPACE}:/var/lib/maven:rw"
         }
     }
     stages {
