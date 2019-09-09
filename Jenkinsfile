@@ -6,9 +6,9 @@ pipeline {
         stage('Initialize') {
             steps {
                 sh '''
-                    docker volume create wpsmvn
-                    docker volume ls
-                    docker volume inspect wpsmvn
+                    mkdir -p /home/jenkins/wpsmvn
+                    ls -la /home/jenkins
+                    ls -la /home/jenkins/wpsmvn
                 '''
             }
         }
@@ -19,7 +19,7 @@ pipeline {
                     filename 'Dockerfile'
                     registryUrl 'https://quay.io/repository/'
                     registryCredentialsId 'quay-welltok-mkitawat'
-                    args "-v wpsmvn:/var/lib/maven:rw,z"
+                    args "-v /home/jenkins/wpsmvn:/var/lib/maven:rw,z"
                 }
             }
             steps {
@@ -36,6 +36,8 @@ pipeline {
                     whereis mvn
                     java -version
                     mvn --version
+                    ls -la /var/lib
+                    ls -la /var/lib/maven
                     mvn help:effective-settings
                     mvn help:system
                 '''
